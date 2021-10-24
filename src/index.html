@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>CSS Fundamentals</title>
+
+    <!-- External Styling -->
+    <link rel="stylesheet" href="/styles/main.css" />
+    <!-- END -->
+
+    <!-- Theme Siwtcher-->
+    <link rel="stylesheet" href="/styles/theme-switcher.css" />
+
+    <!-- Other Import concurently -->
+    <link rel="stylesheet" href="/styles/variables.css" />
+    <link rel="stylesheet" href="/styles/utility.css" />
+    
+  </head>
+
+    <!-- Styling an element -->
+    <header>
+        <h1>CSS Fundamentals Training</h1>
+        <div class="theme-switcher">
+        </div>
+    </header>
+
+    <!-- Search Input -->
+    <section class="searchbar">
+        <input id="search-input" type="search" placeholder="Please enter you input here" required>
+    </section>
+
+    <!-- Grid -->
+    <section class="movies">
+          <div class="movies__header">
+            <input type="checkbox" class="theme-switcher" id="theme-switcher">
+            <label for="theme-switcher" class="theme-switcher__lable">
+              <img src="assets/moon-solid.svg" class="icon icon-dark-theme"></img>
+              <img src="assets/sun-solid.svg" class="icon icon-light-theme"></img>
+              <span class="toggle-circle"></span>
+            </label>
+          </div>
+          <div class="movies__content">
+            <div class="card movie-trending">
+              <img class="card-image" src="assets/Dune.jpg" alt="Dune" />
+              <div class="card-info">
+                <p class="card-title">Dune</p>
+                <button class="card-button">Book Ticket</button>
+              </div>
+            </div>
+            <div class="card unread">
+              <img class="card-image" src="assets/Interstellar.jpg" alt="Interstellar" />
+              <div class="card-info">
+                <p class="card-title">Interstellar</p>
+                <button class="card-button">Book Ticket</button>
+              </div>
+            </div>
+            <div class="card">
+              <img class="card-image" src="assets/Goodfellas.jpg" alt="Goodfellas" />
+              <div class="card-info">
+                <p class="card-title">Goodfellas</p>
+                <button class="card-button">Book Ticket</button>
+              </div>
+            </div>
+            <div class="card unread">
+              <img class="card-image" src="assets/Inception.jpg" alt="Inception" />
+              <div class="card-info">
+                <p class="card-title">Inception</p>
+                <button class="card-button">Book Ticket</button>
+              </div>
+            </div>
+            <div class="card">
+              <img class="card-image" src="assets/GodFather_1.jpg" alt="GodFather 1" />
+              <div class="card-info">
+                <p class="card-title">GodFather Part 1</p>
+                <button class="card-button">Book Ticket</button>
+              </div>
+            </div>
+            <div class="card">
+              <img class="card-image" src="assets/Jocker.jpg" alt="Jocker" />
+              <div class="card-info">
+                <p class="card-title">Jocker</p>
+                <button class="card-button">Book Ticket</button>
+              </div>
+            </div>
+            <div class="card unread">
+              <img class="card-image" src="assets/Matrix.jpg" alt="Matrix" />
+              <div class="card-info">
+                <p class="card-title">Matrix</p>
+                <button class="card-button">Book Ticket</button>
+              </div>
+            </div>
+            <div class="card">
+              <img class="card-image" src="assets/GodFather_2.jpg" alt="GodFather 2" />
+              <div class="card-info">
+                <p class="card-title">GodFather Part 2</p>
+                <button class="card-button">Book Ticket</button>
+              </div>
+            </div>
+          </div>
+    </section>
+    <script src="scripts/authorization.js" defer></script>
+    <script src="scripts/themeSwitcher.js" defer></script>
+    <script src="scripts/search.js" defer></script>
+    <script src="scripts//cardScripts.js" defer></script>
+  </body>
+</html>

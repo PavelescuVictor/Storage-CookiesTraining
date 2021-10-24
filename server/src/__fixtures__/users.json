@@ -1,0 +1,30 @@
+{
+  "users": [
+    {
+      "id": "717d29a8-4270-42a9-80fd-b7a6750ab04a",
+      "username": "user1",
+      "nickname": "Pavelescu Victor",
+      "password": "password1",
+      "bookmarkedMovies": [
+        {
+          "id": "3a5029b4-a5fc-4fb1-aec1-452ae3b6207f"
+        },
+        {
+          "id": "28af6e3d-69e4-4123-8311-25a8c2cbba0d"
+        },
+        {
+          "id": "2e0701c5-3398-4204-bbc7-b7c0a35d0afef"
+        }
+      ],
+      "acceptedCookies": false
+    },
+    {
+      "id": "b8fd7187-e7c6-47cc-89ae-c7bd0d20f75d",
+      "username": "user2",
+      "nickname": "Other User",
+      "password": "password2",
+      "bookmarkedMovies": [],
+      "acceptedCookies": false
+    }
+  ]
+}
