@@ -1,33 +1,38 @@
 const baseURL = 'http://localhost:3000';
 
-const login = () => {
+const login = async () => {
   const url = `${baseURL}/login`;
   const method = 'POST';
   const payload = {
-    username: 'user1',
-    password: 'password1',
+    username: 'user2',
+    password: 'password2',
   };
   const headers = {
     'Content-Type': 'application/json',
   };
-  fetch(url, {
+  const response = await fetch(url, {
     method,
     headers,
     body: JSON.stringify(payload),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('user-data', JSON.stringify(data.userData));
-    });
+  });
+  const results = await response.json();
+
+  localStorage.setItem('token', results.token);
+  localStorage.setItem('user-data', JSON.stringify(results.userData));
 };
 
-const checkUserAuthorization = () => {
-  const accessToken = localStorage.getItem('access_token');
-
-  if (!accessToken) {
-    login();
-  }
+export const checkUserAuthorization = () => {
+  return new Promise((resolve, reject) => {
+    try {
+      const accessToken = localStorage.getItem('access_token');
+      if (!accessToken) {
+        login();
+      }
+      resolve();
+    } catch {
+      reject('Some error occured during authorization process.');
+    }
+  });
 };
 
-checkUserAuthorization();
+export default {};

@@ -1,67 +1,10 @@
-const movies = [
-  {
-    title: 'Dune',
-    image: 'assets/Dune.jpg',
-    isTrending: true,
-  },
-  {
-    title: 'Interstellar',
-    image: 'assets/Interstellar.jpg',
-    isTrending: false,
-    isUnread: true,
-  },
-  {
-    title: 'Goodfellas',
-    image: 'assets/Goodfellas.jpg',
-    isTrending: true,
-  },
-  {
-    title: 'Inception',
-    image: 'assets/Inception.jpg',
-    isTrending: false,
-    isUnread: true,
-  },
-  {
-    title: 'Godfather Part 1',
-    image: 'assets/Godfather_1.jpg',
-    isTrending: true,
-  },
-  {
-    title: 'Jocker',
-    image: 'assets/Jocker.jpg',
-    isTrending: true,
-  },
-  {
-    title: 'Matrix',
-    image: 'assets/Matrix.jpg',
-    isTrending: false,
-    isUnread: true,
-  },
-  {
-    title: 'Godfather Part 2',
-    image: 'assets/Godfather_2.jpg',
-    isTrending: false,
-  },
-];
+let movies;
+
+const baseURL = 'http://localhost:3000';
+const relativePathToAssets = '/assets/';
 
 const getAccessToken = () => {
   return localStorage.getItem('token');
-};
-
-const initializeMovies = () => {
-  const url = `${baseURL}/movies`;
-  const method = 'GET';
-  const headers = {
-    Authorization: `Bearer ${getAccessToken()}`,
-  };
-  fetch(url, {
-    method,
-    headers,
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-    });
 };
 
 const createMovieCard = (movie) => {
@@ -87,7 +30,7 @@ const createMovieCard = (movie) => {
   const cardImage = document.createElement('img');
   cardImage.classList.add('card-image');
   cardImage.setAttribute('alt', movie.title);
-  cardImage.setAttribute('src', movie.image);
+  cardImage.setAttribute('src', `${relativePathToAssets}${movie.image}`);
 
   // Card Wrapper
   const cardWrapper = document.createElement('div');
@@ -112,6 +55,30 @@ const filterMovies = (queryString) => {
   });
 };
 
+const setMovies = () => {
+  const moviesWrapper = document.querySelector('.movies__content');
+  movies.forEach((movie) => {
+    const movieCard = createMovieCard(movie);
+    moviesWrapper.appendChild(movieCard);
+  });
+};
+
+const setBookmarks = () => {
+  const bookmarks = JSON.parse(
+    localStorage.getItem('user-data')
+  ).bookmarkedMovies;
+  const bookmarksWrapper = document.querySelector('.bookmarks__content');
+  bookmarks.forEach((bookmark) => {
+    const movie = movies.find(({ id }) => id === bookmark.id);
+    const bookmarkCard = createMovieCard(movie);
+    bookmarksWrapper.appendChild(bookmarkCard);
+    const bookmarkCard2 = createMovieCard(movie);
+    bookmarksWrapper.appendChild(bookmarkCard2);
+    const bookmarkCard3 = createMovieCard(movie);
+    bookmarksWrapper.appendChild(bookmarkCard3);
+  });
+};
+
 const resetMovies = () => {
   const moviesWrapper = document.querySelector('.movies__content');
   while (moviesWrapper.firstChild)
@@ -131,4 +98,22 @@ searchInput.addEventListener('input', (event) => {
   else resetMovies();
 });
 
-initializeMovies();
+export const initializeMovies = () => {
+  const url = `${baseURL}/movies`;
+  const method = 'GET';
+  const headers = {
+    Authorization: `Bearer ${getAccessToken()}`,
+  };
+  fetch(url, {
+    method,
+    headers,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      movies = data;
+      setMovies();
+      setBookmarks();
+    });
+};
+
+export default {};

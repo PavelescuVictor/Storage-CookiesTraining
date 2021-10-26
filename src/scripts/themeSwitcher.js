@@ -20,7 +20,7 @@ const themeKey = 'theme';
 
 const themeSwitcher = document.getElementById('theme-switcher');
 
-const initializeTheme = () => {
+export const initializeTheme = () => {
   const themeOption = localStorage.getItem(themeKey);
   if (!themeOption) setTheme(themesOptions.LIGHT);
   else setStyles(themeOption);
@@ -54,5 +54,3 @@ const toggleTheme = () => {
 };
 
 themeSwitcher.addEventListener('change', toggleTheme);
-
-initializeTheme();

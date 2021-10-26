@@ -13,18 +13,23 @@
           "id": "28af6e3d-69e4-4123-8311-25a8c2cbba0d"
         },
         {
-          "id": "2e0701c5-3398-4204-bbc7-b7c0a35d0afef"
+          "id": "2e0701c5-3398-4204-bbc7-b7c0a35d0afe"
         }
-      ],
-      "acceptedCookies": false
+      ]
     },
     {
       "id": "b8fd7187-e7c6-47cc-89ae-c7bd0d20f75d",
       "username": "user2",
       "nickname": "Other User",
       "password": "password2",
-      "bookmarkedMovies": [],
-      "acceptedCookies": false
+      "bookmarkedMovies": [
+        {
+          "id": "e64bb9c5-f6d9-46d7-9ec8-8582487f262a"
+        },
+        {
+          "id": "1e389c7b-308a-425d-839a-780e937ef3da"
+        }
+      ]
     }
   ]
 }

@@ -1,24 +1,28 @@
-.theme-switcher__lable {
-  background-color: var(--color-main);
+.theme-switcher__lable,
+.layout-switcher__lable {
+  background-color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 15px;
-  padding: 5px;
+  padding: 10px;
   border-radius: 50px;
   height: fit-content;
   width: fit-content;
   position: relative;
   cursor: pointer;
+  border: 2px solid var(--color-main);
 }
 
-.theme-switcher {
+.theme-switcher,
+.layout-switcher {
   opacity: 0;
   position: absolute;
 }
 
-.theme-switcher:checked + .theme-switcher__lable .toggle-circle {
-  right: 3px;
+.theme-switcher:checked + .theme-switcher__lable .toggle-circle,
+.layout-switcher:checked + .layout-switcher__lable .toggle-circle {
+  right: 7px;
   left: auto;
   transition: right 0.2s ease-in, left 0.2s ease-in;
 }
@@ -26,16 +30,15 @@
 .icon {
   width: 20px;
   height: 20px;
-  color: var(--color-background-main);
 }
 
 .toggle-circle {
-  height: 25px;
-  width: 25px;
-  background-color: var(--color-background-main);
+  height: 30px;
+  width: 30px;
+  background-color: #000000;
   position: absolute;
   top: 50%;
-  left: 3px;
+  left: 7px;
   right: auto;
   transform: translateY(-50%);
   border-radius: 50%;

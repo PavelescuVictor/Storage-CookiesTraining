@@ -5,10 +5,10 @@ import { jwtAuth, secret } from '../middlewares/jwtAuth';
 
 const loginRoute = Router();
 
-const ACCESS_TOKEN_SECRET = 'AccessTokenSecret';
-const REFRESH_TOKEN_SECRET = 'RefreshTokenSecret';
-const ACCESS_TOKEN_EXPIRY_TIME = '1h';
-const REFRESH_TOKEN_EXPIRY_TIME = '60d';
+// const ACCESS_TOKEN_SECRET = 'AccessTokenSecret';
+// const REFRESH_TOKEN_SECRET = 'RefreshTokenSecret';
+// const ACCESS_TOKEN_EXPIRY_TIME = '1h';
+// const REFRESH_TOKEN_EXPIRY_TIME = '60d';
 
 import fixtures from '../__fixtures__';
 
@@ -113,6 +113,7 @@ loginRoute.post('/', (req, res, next) => {
     secret,
     { expiresIn: '1m' }
   );
+  res.cookie('user-data', results);
   res.json({
     token,
     expiresIn: 1000 * 15 * 1,
@@ -121,13 +122,12 @@ loginRoute.post('/', (req, res, next) => {
           username: results.username,
           nickname: results.nickname,
           bookmarkedMovies: results.bookmarkedMovies,
-          acceptedCookies: results.acceptedCookies,
         }
       : {},
   });
 });
 
-loginRoute.post('/', (req, res) => {
+loginRoute.post('/user-data', (req, res) => {
   res.send(200);
 });
 
